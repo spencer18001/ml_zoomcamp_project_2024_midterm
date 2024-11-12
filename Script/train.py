@@ -64,6 +64,8 @@ with open(best_model_file, "r") as infile:
 best_model_name = json_object["model_name"]
 param_dict = json_object["params"]
 
+print("training the final model")
+
 if best_model_name == "linear regression":
     if param_dict["alpha"] == 0:
         model = LinearRegression()
@@ -96,4 +98,6 @@ elif best_model_name == "xgboost":
 root_mean_squared_error(y_test, y_pred)
 
 with open(model_file, "wb") as f_out:
-    pickle.dump((param_dict, dv, model), f_out)
+    pickle.dump((best_model_name, dv, model), f_out)
+
+print(f"the model is saved to {model_file}")

@@ -30,9 +30,9 @@ def predict():
         dmatrix = xgb.DMatrix(X, feature_names=features)
 
         y_pred = model.predict(dmatrix)
-
+        
     result = {
-        target_name: y_pred,
+        target_name: y_pred[0],
     }
     return jsonify(result)
 
