@@ -8,12 +8,14 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import root_mean_squared_error
 import xgboost as xgb
 
+df_path = "Data/player_statistics_cleaned_final.csv"
 target_name = "Win rate"
 seed = 1
+test_data_file = "test_players.json"
+best_model_file = "best_model_params.json"
 model_file = "model.bin"
 
 ### data preprocessing
-df_path = "Data/player_statistics_cleaned_final.csv"
 df = pd.read_csv(df_path)
 
 # exclude these features
@@ -50,9 +52,13 @@ X_test = dv.fit_transform(test_dict)
 
 features = list(dv.get_feature_names_out())
 
+# Save test dataset for prediction service testing
+json_object = json.dumps(test_dict)
+with open(test_data_file, "w") as outfile:
+    outfile.write(json_object)
 
 ### training
-with open("best_model_params.json", "r") as infile:
+with open(best_model_file, "r") as infile:
     json_object = json.load(infile)
 
 best_model_name = json_object["model_name"]
