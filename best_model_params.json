@@ -1,0 +1,6 @@
+{
+    "model_name": "linear regression",
+    "params": {
+        "alpha": 0.1
+    }
+}
