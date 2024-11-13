@@ -3,7 +3,8 @@ import requests
 
 test_data_file = "test_players.json"
 
-url = 'http://localhost:9696/predict'
+# url = 'http://localhost:9696/predict'
+url = 'https://spencer23-lol-prediction.hf.space/predict'
 
 with open(test_data_file, "r") as infile:
     test_players = json.load(infile)
