@@ -15,6 +15,7 @@ The dataset includes detailed player statistics, such as:
 Each row represents a player’s cumulative performance metrics throughout the championship, offering insights into individual impact and strategic effectiveness.
 
 ## `Notebook/notebook.ipynb`
+<a href=\"https://colab.research.google.com/github/spencer18001/ml_zoomcamp_project_2024_midterm/blob/main/Notebook/notebook.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>
 
 ### 1. Exploratory Data Analysis (EDA)
 - **Data Cleaning**: Removed unnecessary columns and refined specific numerical features.
@@ -56,15 +57,15 @@ Train and save the model:
 - Loads the best model's name and parameters from `best_model_params.json`.
 - Trains the model and saves the model name, encoder, and model to `model.bin`.
 
+```bash
+python Script/train.py
+```
+
 ## `Script/predict.py`
 This script provides a prediction service for player win rates using a trained model.
 - Sets up a prediction service using `Flask`.
 - Loads the trained model from `model.bin`.
 - Receives player data through requests and returns win rate predictions in JSON format.
-
-```bash
-python Script/train.py
-```
 
 ## `Dockerfile`
 This Dockerfile sets up a containerized environment for the win rate prediction service.
