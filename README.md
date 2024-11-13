@@ -89,3 +89,32 @@ python Script/predict_test.py
 The project is deployed on `Hugging Face Spaces` as an API service. The predict_test.py script is pre-configured to send POST requests to the service URL.
 
 [reference](https://github.com/ruslanmv/How-to-Sync-Hugging-Face-Spaces-with-a-GitHub-Repository)
+
+```bash
+curl -X POST https://spencer23-lol-prediction.hf.space/predict \
+-H "Content-Type: application/json" \
+-d '{
+    "Position": "Mid",
+    "Games": 9,
+    "KDA": 3.1,
+    "Avg kills": 3.6,
+    "Avg deaths": 2.7,
+    "Avg assists": 4.8,
+    "CSPerMin": 8.2,
+    "GoldPerMin": 390,
+    "KP%": 0.66,
+    "DamagePercent": 0.282,
+    "DPM": 621,
+    "VSPM": 1.43,
+    "Avg WPM": 0.53,
+    "Avg WCPM": 0.32,
+    "Avg VWPM": 0.25,
+    "GD@15": 30,
+    "CSD@15": 5,
+    "XPD@15": 128,
+    "FB %": 0.222,
+    "FB Victim": 0.0,
+    "Solo Kills": 3,
+    "FlashKeybind": "F"
+}'
+```
