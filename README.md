@@ -30,7 +30,7 @@ Trained and tuned several models with parameter optimization:
 - **XGBoost**: parameters `eta`, `max_depth`, and `min_child_weight`.
 
 ### 3. Model Selection
-Evaluated models using RMSE as the metric. The best model’s name and parameter settings are stored in `best_model_params.json`.
+Evaluated models using **RMSE** as the metric. The best model’s name and parameter settings are stored in `best_model_params.json`.
 - The RMSE of the test dataset:
 ```
 0.1450606188503998
@@ -58,7 +58,7 @@ Train and save the model:
 
 ## `Script/predict.py`
 This script provides a prediction service for player win rates using a trained model.
-- Sets up a prediction service using Flask.
+- Sets up a prediction service using **Flask**.
 - Loads the trained model from `model.bin`.
 - Receives player data through requests and returns win rate predictions in JSON format.
 
@@ -68,7 +68,7 @@ python Script/train.py
 
 ## `Dockerfile`
 This Dockerfile sets up a containerized environment for the win rate prediction service.
-- Builds a container that runs the prediction service using Flask.
+- Builds a container that runs the prediction service using **Flask**.
 - Exposes the service on port 9696 for API requests.
 
 ```bash
