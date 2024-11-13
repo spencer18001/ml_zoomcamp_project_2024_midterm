@@ -87,3 +87,5 @@ python Script/predict_test.py
 
 ## Deployment
 The project is deployed on `Hugging Face Spaces` as an API service. The predict_test.py script is pre-configured to send POST requests to the service URL.
+
+[reference](https://github.com/ruslanmv/How-to-Sync-Hugging-Face-Spaces-with-a-GitHub-Repository)
