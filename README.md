@@ -35,3 +35,52 @@ Evaluated models using RMSE as the metric. The best model’s name and parameter
 ```
 0.1450606188503998
 ```
+## `Pipenv`
+This project uses **Pipenv** for managing dependencies in the development environment.
+
+
+```bash
+pip install pipenv # install
+
+pipenv --version # verify the installation
+# my output: pipenv, version 2024.4.0
+
+pipenv install # install project dependencies
+
+pipenv shell # activate the Pipenv virtual environment
+```
+
+## `Script/train.py`
+Train and save the model:
+- Preprocesses data and saves the test dataset to `test_players.json`.
+- Loads the best model's name and parameters from `best_model_params.json`.
+- Trains the model and saves the model name, encoder, and model to `model.bin`.
+
+## `Script/predict.py`
+This script provides a prediction service for player win rates using a trained model.
+- Sets up a prediction service using Flask.
+- Loads the trained model from `model.bin`.
+- Receives player data through requests and returns win rate predictions in JSON format.
+
+```bash
+python Script/train.py
+```
+
+## `Dockerfile`
+This Dockerfile sets up a containerized environment for the win rate prediction service.
+- Builds a container that runs the prediction service using Flask.
+- Exposes the service on port 9696 for API requests.
+
+```bash
+docker build -t lol-prediction .
+docker run -it -p 9696:9696 lol-prediction
+```
+
+## `Script/predict_test.py`
+This script tests the prediction service by sending requests using player data from the test dataset.
+- Reads player data from `test_players.json`.
+- Selects a random player, sends a request to the prediction service, and prints the response.
+
+```bash
+python Script/predict_test.py
+```
