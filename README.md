@@ -14,7 +14,7 @@ The dataset includes detailed player statistics, such as:
 
 Each row represents a player’s cumulative performance metrics throughout the championship, offering insights into individual impact and strategic effectiveness.
 
-## `Notebook/notebook.ipynb` <a href="https://colab.research.google.com/github/spencer18001/ml_zoomcamp_project_2024_midterm/blob/main/Notebook/notebook.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+## `Notebook/notebook.ipynb` <a href="https://colab.research.google.com/github/spencer18001/ml_zoomcamp_project_2024_midterm/blob/main/Notebook/notebook.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 ### 1. Exploratory Data Analysis (EDA)
 - **Data Cleaning**: Removed unnecessary columns and refined specific numerical features.
