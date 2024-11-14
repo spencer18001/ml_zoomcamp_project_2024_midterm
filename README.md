@@ -43,7 +43,7 @@ Trained and tuned several models with parameter optimization:
 Evaluated models using `RMSE` as the metric. The best model’s name and parameter settings are stored in `best_model_params.json`.
 - The `RMSE` of the test dataset:
 ```
-0.1450606188503998
+0.11033999305216557
 ```
 ## `Pipenv`
 This project uses **Pipenv** for managing dependencies in the development environment.
