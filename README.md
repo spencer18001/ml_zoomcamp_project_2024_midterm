@@ -103,13 +103,17 @@ This script tests the prediction service by sending requests using player data f
 - Selects a random player, sends a request to the prediction service, and prints the response.
 
 ```bash
-python Script/predict_test.py
+python Script/predict_test.py local # use local service
 ```
 
 ## Deployment
 The project is deployed on `Hugging Face Spaces` as an API service. The predict_test.py script is pre-configured to send POST requests to the service URL.
 
 [reference](https://github.com/ruslanmv/How-to-Sync-Hugging-Face-Spaces-with-a-GitHub-Repository)
+
+```bash
+python Script/predict_test.py # use cloud service
+```
 
 ```bash
 curl -X POST https://spencer23-lol-prediction.hf.space/predict \
