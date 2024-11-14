@@ -1,3 +1,13 @@
+---
+title: lol_prediction
+emoji: 😻
+colorFrom: blue
+colorTo: pink
+sdk: docker
+app_port: 9696
+pinned: false
+---
+
 # LoL Championship Player Performance Prediction
 
 This project analyzes player performance data from the **2024 League of Legends World Championship** to predict win rates based on in-game statistics. By modeling the 'Win rate' as the target variable, the project aims to uncover which gameplay strategies correlate with higher success rates.

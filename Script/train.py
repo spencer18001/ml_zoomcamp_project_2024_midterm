@@ -10,7 +10,7 @@ import xgboost as xgb
 
 df_path = "Data/player_statistics_cleaned_final.csv"
 target_name = "Win rate"
-seed = 1
+seed = 123
 test_data_file = "test_players.json"
 best_model_file = "best_model_params.json"
 model_file = "model.bin"
@@ -53,7 +53,8 @@ X_test = dv.fit_transform(test_dict)
 features = list(dv.get_feature_names_out())
 
 # Save test dataset for prediction service testing
-json_object = json.dumps(test_dict)
+json_object = json.dumps(test_dict, separators=("", ", "": "), indent=2)
+json_object = json_object.replace("\n    ", "").replace("\n  }", "}")
 with open(test_data_file, "w") as outfile:
     outfile.write(json_object)
 
@@ -93,9 +94,9 @@ elif best_model_name == "xgboost":
         "verbosity": 1,
     } | param_dict
     model = xgb.train(params, dfulltrain, num_boost_round=200)
-    y_pred = model.predict(y_test)
+    y_pred = model.predict(dtest)
 
-root_mean_squared_error(y_test, y_pred)
+print(f"The RMSE of the test dataset: {root_mean_squared_error(y_test, y_pred)}")
 
 with open(model_file, "wb") as f_out:
     pickle.dump((best_model_name, dv, model), f_out)
