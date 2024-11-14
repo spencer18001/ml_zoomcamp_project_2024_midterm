@@ -41,6 +41,17 @@ Trained and tuned several models with parameter optimization:
 
 ### 3. Model Selection
 Evaluated models using `RMSE` as the metric. The best model’s name and parameter settings are stored in `best_model_params.json`.
+- `best_model_params.json`
+```json
+{
+    "model_name": "xgboost",
+    "params": {
+        "min_child_weight": 1,
+        "max_depth": 1,
+        "eta": 0.1
+    }
+}
+```
 - The `RMSE` of the test dataset:
 ```
 0.11033999305216557
