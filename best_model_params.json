@@ -1,6 +1,8 @@
 {
-    "model_name": "linear regression",
+    "model_name": "xgboost",
     "params": {
-        "alpha": 0.1
+        "min_child_weight": 1,
+        "max_depth": 1,
+        "eta": 0.1
     }
 }
