@@ -94,7 +94,7 @@ elif best_model_name == "xgboost":
         "verbosity": 1,
     } | param_dict
     model = xgb.train(params, dfulltrain, num_boost_round=200)
-    y_pred = model.predict(dtest)
+    y_pred = model.predict(dtest).tolist()
 
 print(f"The RMSE of the test dataset: {root_mean_squared_error(y_test, y_pred)}")
 
