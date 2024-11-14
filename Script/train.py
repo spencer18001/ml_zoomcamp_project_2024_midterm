@@ -53,7 +53,7 @@ X_test = dv.fit_transform(test_dict)
 features = list(dv.get_feature_names_out())
 
 # Save test dataset for prediction service testing
-json_object = json.dumps(test_dict, separators=("", ", "": "), indent=2)
+json_object = json.dumps(test_dict, indent=2)
 json_object = json_object.replace("\n    ", "").replace("\n  }", "}")
 with open(test_data_file, "w") as outfile:
     outfile.write(json_object)

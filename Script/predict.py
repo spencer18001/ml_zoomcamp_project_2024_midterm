@@ -29,8 +29,8 @@ def predict():
     elif model_name == "xgboost":
         dmatrix = xgb.DMatrix(X, feature_names=features)
 
-        y_pred = model.predict(dmatrix)
-        
+        y_pred = model.predict(dmatrix).tolist()
+    
     result = {
         target_name: y_pred[0],
     }
