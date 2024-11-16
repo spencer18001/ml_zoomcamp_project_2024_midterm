@@ -83,13 +83,13 @@ python Script/train.py
 
 ## `Script/predict.py`
 This script provides a prediction service for player win rates using a trained model.
-- Sets up a prediction service using `Flask`.
+- Sets up a prediction service using **Flask**.
 - Loads the trained model from `model.bin`.
 - Receives player data through requests and returns win rate predictions in JSON format.
 
 ## `Dockerfile`
 This Dockerfile sets up a containerized environment for the win rate prediction service.
-- Builds a container that runs the prediction service using `Flask`.
+- Builds a container that runs the prediction service using **Flask**.
 - Exposes the service on port 9696 for API requests.
 
 ```bash
@@ -107,7 +107,7 @@ python Script/predict_test.py local # use local service
 ```
 
 ## Deployment
-The project is deployed on `Hugging Face Spaces` as an API service. The predict_test.py script is pre-configured to send POST requests to the service URL.
+The project is deployed on **Hugging Face Spaces** as an API service. The `predict_test.py` script is pre-configured to send POST requests to the service URL.
 
 [reference](https://github.com/ruslanmv/How-to-Sync-Hugging-Face-Spaces-with-a-GitHub-Repository)
 

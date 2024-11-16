@@ -15,21 +15,21 @@ test_data_file = "test_players.json"
 best_model_file = "best_model_params.json"
 model_file = "model.bin"
 
-### data preprocessing
+### Data Preprocessing
 df = pd.read_csv(df_path)
 
-# exclude these features
+# Drop columns with high correlation to the target ('Win rate') to avoid relying on non-generalizable features
 df.drop(columns=["TeamName", "PlayerName", "Country"], inplace=True)
 
-# "Solo Kills" should be a numerical feature
-# based on dataset documentation, "-" likely indicates 0
+# Convert "Solo Kills" to a numerical feature:
+# According to the dataset documentation, "-" likely represents 0
 df["Solo Kills"] = df["Solo Kills"].replace(to_replace="-", value=0)
 df["Solo Kills"] = df["Solo Kills"].astype(int)
 
-# remove "Penta Kills" as all values are 0
+# Drop the "Penta Kills" column since it contains only zeros and adds no predictive value
 df.drop(columns=["Penta Kills"], inplace=True)
 
-# using only df_full_train and df_test due to small dataset size and planned cross-validation
+# Using only df_full_train and df_test due to small dataset size and planned cross-validation
 df_full_train, df_test = train_test_split(df, test_size=0.2, random_state=seed)
 
 df_full_train = df_full_train.reset_index(drop=True)
@@ -41,7 +41,7 @@ y_test = df_test[target_name].values
 del df_full_train[target_name]
 del df_test[target_name]
 
-# encode features
+# Encode features using DictVectorizer to convert data into numerical format for model training
 dv = DictVectorizer(sparse=False)
 
 full_train_dict = df_full_train.to_dict(orient="records")
@@ -58,7 +58,8 @@ json_object = json_object.replace("\n    ", "").replace("\n  }", "}")
 with open(test_data_file, "w") as outfile:
     outfile.write(json_object)
 
-### training
+### Training
+# Load the best model's name and hyperparameters
 with open(best_model_file, "r") as infile:
     json_object = json.load(infile)
 
@@ -67,6 +68,7 @@ param_dict = json_object["params"]
 
 print("training the final model")
 
+# Select the best model based on the name and hyperparameters, then train and make predictions on the test set
 if best_model_name == "linear regression":
     if param_dict["alpha"] == 0:
         model = LinearRegression()
@@ -96,8 +98,10 @@ elif best_model_name == "xgboost":
     model = xgb.train(params, dfulltrain, num_boost_round=200)
     y_pred = model.predict(dtest).tolist()
 
+# Calculate RMSE on test dataset
 print(f"The RMSE of the test dataset: {root_mean_squared_error(y_test, y_pred)}")
 
+# Save the best model name, DictVectorizer, and model to a file using pickle
 with open(model_file, "wb") as f_out:
     pickle.dump((best_model_name, dv, model), f_out)
 
